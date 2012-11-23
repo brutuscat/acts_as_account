@@ -20,7 +20,7 @@ class Journal < ActiveRecord::Base
 
   def transfers
     [].tap do |transfers|
-      postings.in_groups_of(2) { |postings| transfers << Transfer.new(*postings) }
+      postings.in_groups_of(2) { |postings| transfers << ActsAsAccount::Transfer.new(*postings) }
     end
   end
 
